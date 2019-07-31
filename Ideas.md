@@ -93,7 +93,7 @@ Technical Area 3 is concerned fault-tolerant data connectors across disparate so
 
 For this discussion, we present the use case of building a data pipeline for log analysis in a distributed system which supports millions of users. The application system will sometimes have spikes in user activity and the framework needs to take care of such scenarios. The create this pipeline, IGI recommends the system architecture with Logstash as forwarder, Kafka as queue, spark as analytics engine and Elasticsearch as data store.
 
-![Data Pipeline](Images/Fault1.png "Data Pipeline")
+![Data Pipeline](Images/fault1.png "Data Pipeline")
 
 ### Fault tolerance
 As we will demonstrate fault tolerance is provided so that the failure of a particular module should not result in data loss.
@@ -108,19 +108,19 @@ Kafka is a distributed publish-subscribe messaging system. It was originally dev
 **Kafka can be leveraged in fault tolerance** as Kafka can hold data for a configurable time interval. Even if pipeline ahead of kafka goes down it will have data stored in kafka queue. 
 Kafka can have multiple brokers, so Zookeeper is used to keep track of active brokers and all communication to kafka should go through Zookeeper.
 
-![Kafka Broker](Images/Fault2.png "Kafka Broker")
+![Kafka Broker](Images/fault2.png "Kafka Broker")
 
 #### Failure at Spark
 
 Spark is used for alerting and outlier detection. To provide fault tolerance, we need to implement a hot standby master node with service discovery. 
 
-![Spark](Images/Fault3.png "Spark")
+![Spark](Images/fault3.png "Spark")
 
 #### Failure at Elasticsearch
 
 Elasticsearch is a distributed, multi-tenant-capable, full-text search engine. For stability and best performance of the Elasticsearch cluster, we would keep a spate node as master node. It can be done by making **“data=false”** and **“master=true”** in config file.
 
-![Elastic Search](Images/Fault4.png "Elastic Search")
+![Elastic Search](Images/fault4.png "Elastic Search")
 
 Like the above scenario, IGI can plan for the failure and implement solutions with redundancy as our key underlying approach to fault tolerance.
 
