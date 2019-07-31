@@ -49,6 +49,7 @@ the skills, talent and forward thinking of our employees. We
 recommend in investing in talent which makes the magic
 happen, instead of acquiring expensive closed systems which
 promise to do everything.
+
 ![Poeple are key](Images/people.png "People are key")
 
 ## Self-Healing Systems
